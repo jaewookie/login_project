@@ -36,6 +36,24 @@ router.post('/regist',(req, res)=>{
 })
 
 /* log in page */
+router.post('/regist',(req, res)=>{
+    
+    var email = req.body.email
+    var password = req.body.password
+    var sql = 'SELECT*FROM users WHERE email=?'
+    db.query(sql, [email], (err, result)=>{
+        if(!err){
+            if(email==result[0].email && password == result[0].password){
+                console.log(`Success`)
+            }else{
+                console.log(`Failed`)
+                res.redirect('/login')
+            }
+
+        }
+    })
+})
+
 router.get('/login', (req, res)=>{
     res.render('log_in')
 })
