@@ -10,7 +10,7 @@ var db = mysql.createConnection({
 })
 
 
-/* create account page */
+/* create account page Router*/
 router.get('/regist', (req, res)=>{
     res.render('regist')
 })
@@ -35,7 +35,12 @@ router.post('/regist',(req, res)=>{
     })
 })
 
-/* log in page */
+/* log in page Router*/
+
+router.get('/login', (req, res)=>{
+    res.render('log_in')
+})
+
 
 router.post('/login',(req, res)=>{
     
@@ -53,10 +58,6 @@ router.post('/login',(req, res)=>{
 
         }
     })
-})
-
-router.get('/login', (req, res)=>{
-    res.render('log_in')
 })
 
 module.exports = router
